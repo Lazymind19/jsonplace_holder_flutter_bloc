@@ -84,14 +84,16 @@ class _PostPageState extends State<PostPage> {
         itemCount: postList.length,
         itemBuilder: (context, index) {
           return Container(
+            padding: EdgeInsets.all(15),
             margin: EdgeInsets.all(10),
             decoration: const BoxDecoration(
                 border: Border(
                     bottom: BorderSide(color: Colors.black, width: 2.0))),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("${postList[index].userId}"),
-                Text("${postList[index].title}"),
+                Text("${postList[index].id}"),
+                Text("${postList[index].title}",style: TextStyle(fontWeight: FontWeight.bold),),
                 Text("${postList[index].body}"),
               ],
             ),
