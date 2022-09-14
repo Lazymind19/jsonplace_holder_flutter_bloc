@@ -1,4 +1,12 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
+
+List<PostModel> postModelFromJson(String str) =>
+    List<PostModel>.from(json.decode(str).map((x) => PostModel.fromJson(x)));
+
+String postModelToJson(List<PostModel> data) =>
+    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class PostModel extends Equatable {
   int? userId;
@@ -7,17 +15,23 @@ class PostModel extends Equatable {
   String? body;
   String? error;
 
-  PostModel({this.userId, this.id, this.title, this.body});
+  PostModel(
+      {required this.userId,
+      required this.id,
+      required this.title,
+      required this.body});
 
-  PostModel.withError({String? error}){
+  PostModel.withError({String? error}) {
     error = error;
   }
 
-  PostModel.fromJson(Map<String, dynamic> json) {
-    userId = json['userId'];
-    id = json['id'];
-    title = json['title'];
-    body = json['body'];
+  factory PostModel.fromJson(Map<String, dynamic> json) {
+    return PostModel(
+      userId: json['userId'] as int,
+      id: json['id'] as int,
+      title: json['title'] as String,
+      body: json['body'] as String,
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -30,5 +44,5 @@ class PostModel extends Equatable {
   }
 
   @override
-  List<Object?> get props => [userId,id,title,body,error];
+  List<Object?> get props => [userId, id, title, body, error];
 }

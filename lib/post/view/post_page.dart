@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jsonplaceholder_bloc/post/bloc/post_bloc.dart';
-import 'package:jsonplaceholder_bloc/post/bloc/post_event.dart';
-import 'package:jsonplaceholder_bloc/post/bloc/post_state.dart';
 
 import '../model/post_model.dart';
 
@@ -34,7 +32,7 @@ class _PostPageState extends State<PostPage> {
 
   Widget _postBody() {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: BlocProvider(
         create: (_) => _postBloc,
         child: BlocListener<PostBloc, PostState>(
@@ -86,6 +84,7 @@ class _PostPageState extends State<PostPage> {
         itemCount: postList.length,
         itemBuilder: (context, index) {
           return Container(
+            margin: EdgeInsets.all(10),
             decoration: const BoxDecoration(
                 border: Border(
                     bottom: BorderSide(color: Colors.black, width: 2.0))),

@@ -1,8 +1,11 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:bloc/bloc.dart';
-import 'package:jsonplaceholder_bloc/post/bloc/post_event.dart';
-import 'package:jsonplaceholder_bloc/post/bloc/post_state.dart';
 import 'package:jsonplaceholder_bloc/post/resource/api_repo.dart';
+
+import '../model/post_model.dart';
+part 'post_event.dart';
+part 'post_state.dart';
 class PostBloc extends Bloc<PostEvent, PostState>{
   PostBloc() :super(PostInitial()){
     on<PostEvent>(_onEvent);
